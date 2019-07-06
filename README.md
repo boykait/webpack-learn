@@ -28,3 +28,18 @@ tags:
       执行： "start": "webpack-dev-server --open",
 	3. webpack-dev-middleware
 	```
+- 生产环境和开发环境的构建目标：我们需要具有强大的、具有实时重新加载(live reloading)或热模块替换(hot module replacement)能力的 source map 和 localhost server。而在生产环境中，我们的目标则转向于关注更小的 bundle，更轻量的 source map，以及更优化的资源，以改善加载时间，所以需要不同的配置文件。
+- 代码分离
+- 懒加载，这种方式实际上是先把你的代码在一些逻辑断点处分离开，然后在一些代码块中完成某些操作后，立即引用或即将引用另外一些新的代码块。这样加快了应用的初始加载速度，减轻了它的总体体积，因为某些代码块可能永远不会被加载。比如点击按钮后加载对应的处理逻辑js文件。
+- 缓存问题，前端缓存技术可能会导致本次部署的项目的一些变更无效，比如更改资源但没改变名称，就会使用缓存版本，那么要做的事情就是手动清空缓存。或者可以。。。
+  - 给文件名使用[chunkhash]进行替换：
+  
+    ```javascirpt
+       output: {
+       filename: '[name].[chunkhash].js',
+       path: path.resolve(__dirname, 'dist')
+    }
+    ```
+  - 提取模板
+  - 模板标识符
+
